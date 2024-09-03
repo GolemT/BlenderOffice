@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Modelle mit Three.js</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.createjs.com/1.0.0/tweenjs.min.js"></script>
+
+
+</head>
+<body>
+    <!-- Container für das 3D Canvas -->
+    <div id="canvas-container">
+        <canvas id="three-canvas"></canvas>
+    </div>
+
+    <!-- Navigation für die Modelle -->
+    <div id="model-navigation">
+        <div id="backward" class="nav-item" data-model="model1">Zurück</div>
+        <div id="forward" class="nav-item" data-model="model2">Vor</div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>
