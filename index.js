@@ -3,9 +3,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // Model paths
 const modelPaths = [
-    './models/NexusHQ_SpaceStation2.glb',
-    './models/NexusCode_HQ.glb',
-    './models/Coffee Room.glb'
+    './models/NexusHQ_SpaceStationFinal.gltf',
+    './models/NexusCode_HQ.gltf',
+    './models/Coffee Room.gltf'
 ];
 
 // Points of Interest (POIs) for each model
@@ -46,15 +46,32 @@ let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 let currentModel;
+let currentAnimations;
 const loader = new GLTFLoader();
+const clock = new THREE.Clock();
+let mixer;
+
+function startAnimations(model, animations) {
+  // Erstelle den AnimationMixer
+  mixer = new THREE.AnimationMixer(model);
+
+  // Wähle einen Animationsclip aus (hier verwenden wir den ersten)
+  const action = mixer.clipAction(animations[0]);
+
+  // Animation starten
+  action.play();
+}
+
 
 // Function to load the current model
 function loadModel(index) {
   loader.load(modelPaths[index], function (gltf) {
     if (currentModel) scene.remove(currentModel); // Remove the previous model
     currentModel = gltf.scene;
+    currentAnimations = gltf.animations;
     scene.add(currentModel);
     currentModel.rotation.z = (index === 0) ? 0.5 : 0;
+    startAnimations(currentModel, currentAnimations);
     currentPOIIndex = 0;
     moveToPOI();
   }, undefined, function (error) {
@@ -99,6 +116,13 @@ function animate() {
         isAnimating = false; // Beende die Animation, wenn die Zeit abgelaufen ist
         camera.position.copy(endPosition); // Stelle sicher, dass die Zielposition erreicht ist
         camera.lookAt(endLookAt); // Stelle sicher, dass die Zielblickrichtung erreicht ist
+      }
+
+      const delta = clock.getDelta(); // Die Zeit seit dem letzten Frame
+
+      // Den AnimationMixer updaten
+      if (mixer) {
+        mixer.update(delta);
       }
     
       renderer.render(scene, camera);
