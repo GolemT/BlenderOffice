@@ -11,7 +11,7 @@ const modelPaths = [
 // Points of Interest (POIs) for each model
 const modelPOIs = [
   [ // POIs for model 1
-    {position: { x: 0, y: 40, z: 300 }, lookAt: { x: 0, y: 0, z: 0 }}, // Space Station
+    {position: { x: 100, y: 40, z: -300 }, lookAt: { x: 0, y: 0, z: 0 }}, // Space Station
   ],
   [ // POIs for model 2
     {position: { x: 3, y: 5, z: -3 }, lookAt: { x: 49, y: 5, z: -49 }}, // Start
@@ -43,13 +43,25 @@ let endLookAt = new THREE.Vector3();
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), antialias: true });
+let textureLoader = new THREE.TextureLoader();
 renderer.setSize(window.innerWidth, window.innerHeight);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.5); // Allgemeines Licht: Farbe, Intensität
+
+
+// Sonnenlicht
+const directionalLight = new THREE.DirectionalLight(0xffffff, 10); // Farbe, Intensität
+directionalLight.position.set(5, 5550, 7.5); // Position des Lichts
+scene.add(directionalLight);
 
 let currentModel;
 let currentAnimations;
+const bgTexture = textureLoader.load('./erde.png');
 const loader = new GLTFLoader();
 const clock = new THREE.Clock();
 let mixer;
+
+scene.add(ambientLight);
+scene.background = bgTexture;
 
 function startAnimations(model, animations) {
   // Erstelle den AnimationMixer
@@ -65,6 +77,7 @@ function startAnimations(model, animations) {
 
 // Function to load the current model
 function loadModel(index) {
+  console.log("Loading model", modelPaths[index]);
   loader.load(modelPaths[index], function (gltf) {
     if (currentModel) scene.remove(currentModel); // Remove the previous model
     currentModel = gltf.scene;
