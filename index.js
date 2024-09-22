@@ -15,21 +15,23 @@ const modelPOIs = [
   ],
   [ // POIs for model 2
     {position: { x: 3, y: 5, z: -3 }, lookAt: { x: 49, y: 5, z: -49 }}, // Start
-    {position: { x: 8, y: 3, z: -9 }, lookAt: { x: 49, y: -30, z: -49 }}, // Schreibtisch Tim
-    {position: { x: 6, y: 1, z: -17 }, lookAt: { x: 49, y: 0, z: -55 }}, // Schreibtisch Max
-    {position: { x: 9, y: 2.5, z: -20.5 }, lookAt: { x: 49, y: -10, z: -40 }}, // Schreibtisch Jasper
-    {position: { x: 18, y: 2.5, z: -11 }, lookAt: { x: 49, y: -5, z: -35 }}, // Schreibtisch Alina
+    {position: { x: 9, y: 2, z: -10 }, lookAt: { x: 10, y: 2, z: -11 }}, // Schreibtisch Tim
+    {position: { x: 9, y: 2, z: -10 }, lookAt: { x: 8, y: 2, z: -24 }}, // In die Ecke Schauen
+    {position: { x: 6, y: 1, z: -17 }, lookAt: { x: 10, y: 0, z: -20 }}, // Schreibtisch Max
+    {position: { x: 9, y: 2.5, z: -20.5 }, lookAt: { x: 11, y: 1, z: -21 }}, // Schreibtisch Jasper
+    {position: { x: 18.5, y: 2, z: -13 }, lookAt: { x: 20, y: 2, z: -13 }}, // Schreibtisch Alina
     {position: { x: 16, y: 1, z: -8.5}, lookAt: { x: 49, y: 0, z: -5 }}, // Schreibtisch Juliette
+    {position: { x: 22, y: 2.5, z: -2}, lookAt: { x: 25, y: 1, z: 1 }}, // Whiteboard
     {position: { x: 15, y: 5, z: -15 }, lookAt: { x: 0, y: 5, z: 0 }}, // Teleporter
   ],
   [ // POIs for model 3
-    {position: { x: -10, y: 5, z: -6 }, lookAt: { x: -60, y: 5, z: -49 }}, // Start
-    {position: { x: -28, y: 4, z: -8 }, lookAt: { x: -15, y: -10, z: 20 }}, // Kaffeküche
-    {position: { x: -20, y: 3, z: -15 }, lookAt: { x: 50, y: 5, z: -25 }}, // Gamer Ecker
+    {position: { x: -10, y: 5, z: -6 }, lookAt: { x: -11, y: 5, z: -7 }}, // Start
+    {position: { x: -28, y: 3, z: -8 }, lookAt: { x: -23, y: 0, z: 0 }}, // Kaffeküche
+    {position: { x: -20, y: 3, z: -15 }, lookAt: { x: 0, y: 5, z: -20 }}, // Gamer Ecker
   ]
 ];
 
-let currentModelIndex = 0;
+let currentModelIndex = 2;
 let currentPOIIndex = 0;
 let isAnimating = false;
 let animationDuration = 2000; // Dauer der Animation in Millisekunden
