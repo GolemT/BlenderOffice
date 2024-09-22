@@ -45,7 +45,7 @@ let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHei
 let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), antialias: true });
 let textureLoader = new THREE.TextureLoader();
 renderer.setSize(window.innerWidth, window.innerHeight);
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.5); // Allgemeines Licht: Farbe, Intensität
+const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Allgemeines Licht: Farbe, Intensität
 
 
 // Sonnenlicht

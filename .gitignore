@@ -1,5 +1,7 @@
 node_modules
 
-./modules/
+./models/
 
 *.glb
+*.gltf
+*.bin
