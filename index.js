@@ -31,7 +31,7 @@ const modelPOIs = [
   ]
 ];
 
-let currentModelIndex = 2;
+let currentModelIndex = 1;
 let currentPOIIndex = 0;
 let isAnimating = false;
 let animationDuration = 2000; // Dauer der Animation in Millisekunden
